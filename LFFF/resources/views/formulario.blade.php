@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Usuarios</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZjyPpEJ1s5w5aRU9OFpRpok6YtcYnDr5pNtLY12bKjXn0JHjYdhN+ALeWIh" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <body>
