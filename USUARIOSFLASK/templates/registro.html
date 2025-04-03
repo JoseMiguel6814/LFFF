@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Usuario</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Registro de Usuario</h2>
+        <form id="registroForm">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" required>
+            </div>
+            <div class="mb-3">
+                <label for="edad" class="form-label">Edad</label>
+                <input type="number" class="form-control" id="edad" required>
+            </div>
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="correo" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+
+    <script>
+        $("#registroForm").submit(function (event) {
+            event.preventDefault();
+            let usuario = {
+                name: $("#nombre").val(),
+                age: parseInt($("#edad").val()),
+                email: $("#correo").val()
+            };
+
+            $.ajax({
+                url: "http://127.0.0.1:5001/agregarusuariodb",
+                type: "POST",
+                contentType: "application/json",
+                data: JSON.stringify(usuario),
+                success: function () {
+                    alert("Usuario registrado correctamente");
+                    $("#registroForm")[0].reset();
+                },
+                error: function () {
+                    alert("Error al registrar usuario.");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

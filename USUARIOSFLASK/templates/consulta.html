@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Usuarios</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center">Lista de Usuarios</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Edad</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody id="tablaUsuarios"></tbody>
+        </table>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            $.get("http://127.0.0.1:5001/todosusuarios", function (data) {
+                let tabla = "";
+                data.forEach(user => {
+                    tabla += `<tr>
+                        <td>${user.id}</td>
+                        <td>${user.name}</td>
+                        <td>${user.age}</td>
+                        <td>${user.email}</td>
+                    </tr>`;
+                });
+                $("#tablaUsuarios").html(tabla);
+            }).fail(function () {
+                alert("Error al obtener usuarios.");
+            });
+        });
+    </script>
+</body>
+</html>
